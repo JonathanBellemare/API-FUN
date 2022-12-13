@@ -4,12 +4,6 @@ pipeline:
   projectIdentifier: JoTestApp
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: JoGithubAccount
-        repoName: API-FUN
-        build: <+input>
   stages:
     - stage:
         name: Run tests
@@ -20,16 +14,28 @@ pipeline:
           cloneCodebase: true
           execution:
             steps:
-              - name: test
-                image: python
-                commands:
-                  - pip install -r requirements/requirements.txt
-                  - pytest
+              - step:
+                  type: Run
+                  name: Run
+                  identifier: Run
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python
+                    shell: Bash
+                    command: |-
+                      pip install -r requirements/requirements.txt
+                      pytest
+                    imagePullPolicy: IfNotPresent
+                  description: RUn python tests
           platform:
             os: Linux
             arch: Amd64
           runtime:
             type: Cloud
             spec: {}
-        when:
-          pipelineStatus: All
+  properties:
+    ci:
+      codebase:
+        connectorRef: JoGithubAccount
+        repoName: API-FUN
+        build: <+input>
