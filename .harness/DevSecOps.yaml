@@ -1,0 +1,35 @@
+pipeline:
+  name: DevSecOps
+  identifier: DevSecOps
+  projectIdentifier: JoTestApp
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: JoGithubAccount
+        repoName: API-FUN
+        build: <+input>
+  stages:
+    - stage:
+        name: Run tests
+        identifier: Run_tests
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - name: test
+                image: python
+                commands:
+                  - pip install -r requirements/requirements.txt
+                  - pytest
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+        when:
+          pipelineStatus: All
