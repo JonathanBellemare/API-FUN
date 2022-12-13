@@ -50,7 +50,7 @@ pipeline:
                     connectorRef: DockerhubJo
                     repo: jonathanbellemare1/harness-repo
                     tags:
-                      - api-fun
+                      - api-fun:0.1.0
                   failureStrategies: []
           platform:
             os: Linux
