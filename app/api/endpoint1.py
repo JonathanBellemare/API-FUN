@@ -1,6 +1,5 @@
 from fastapi import APIRouter
-from logic import l
-from logic.logic import Logic
+from app.logic.logic import Logic
 
 router = APIRouter(prefix="/endpoint1", tags=["endpoint1"])
 

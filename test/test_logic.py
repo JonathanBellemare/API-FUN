@@ -1,4 +1,4 @@
-from logic.logic import Logic
+from app.logic.logic import Logic
 import pytest
 
 

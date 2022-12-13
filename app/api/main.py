@@ -1,7 +1,7 @@
 from enum import Enum
 from fastapi import FastAPI
 
-from api import endpoint1
+from app.api import endpoint1
 
 app = FastAPI(title="API for fun")
 
