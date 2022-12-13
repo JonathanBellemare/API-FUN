@@ -47,7 +47,7 @@ pipeline:
                   name: Build and Push an image to Docker Registry
                   identifier: BuildandPushanimagetoDockerRegistry
                   spec:
-                    connectorRef: DockerhubJo
+                    connectorRef: account.harnessImage
                     repo: jonathanbellemare1/harness-repo
                     tags:
                       - 0.2.0
