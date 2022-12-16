@@ -24,6 +24,7 @@ pipeline:
                     command: |-
                       pip install -r requirements/requirements.txt
                       pytest
+                      echo hello
                     imagePullPolicy: IfNotPresent
                   description: RUn python tests
               - step:
