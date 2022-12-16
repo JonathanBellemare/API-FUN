@@ -32,7 +32,7 @@ pipeline:
                   identifier: Push_docker
                   spec:
                     connectorRef: DockerhubJo
-                    repo: jonathanbellemare1/harness-repo
+                    repo: jonathanbellemare1/devsecops
                     tags:
                       - <+pipeline.sequenceId>
           platform:
