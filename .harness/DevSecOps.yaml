@@ -28,8 +28,8 @@ pipeline:
                   description: RUn python tests
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: Push docker
-                  identifier: Push_docker
+                  name: push docker
+                  identifier: push_docker
                   spec:
                     connectorRef: DockerhubJo
                     repo: jonathanbellemare1/devsecops
