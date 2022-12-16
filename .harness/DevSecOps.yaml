@@ -6,9 +6,8 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: Run tests
+        name: CI
         identifier: Run_tests
-        description: ""
         type: CI
         spec:
           cloneCodebase: true
@@ -27,31 +26,15 @@ pipeline:
                       pytest
                     imagePullPolicy: IfNotPresent
                   description: RUn python tests
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-    - stage:
-        name: Docker
-        identifier: Docker
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: Build and Push an image to Docker Registry
-                  identifier: BuildandPushanimagetoDockerRegistry
+                  name: Push docker
+                  identifier: Push_docker
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: DockerhubJo
                     repo: jonathanbellemare1/harness-repo
                     tags:
-                      - 0.2.0
-                  failureStrategies: []
+                      - <+pipeline.sequenceId>
           platform:
             os: Linux
             arch: Amd64
